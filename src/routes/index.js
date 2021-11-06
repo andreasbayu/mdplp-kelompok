@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Login from '../views/Login'
 import Register from '../views/Register'
@@ -13,7 +13,7 @@ const Routers = () => {
   return (
     <Router>
       <Switch>
-        <Route path='/register' component={Register} />
+        
         <Route path='/user/:path?'>
           <DefaultLayout>
             <Switch>
@@ -26,8 +26,9 @@ const Routers = () => {
           </DefaultLayout>
         </Route>
         <Router>
-          <Switch>
-            <Route path='/' component={Login} exact/>
+          <Switch><Route path='/register' component={Register} />
+            <Route path='/login' component={Login} /> 
+            <Route path='/' component={Login} />
             <Route component={() => (<div className="text-lg font-bold text-center mt-20">Opps Halaman Tidak Ditemukan</div>)} exact path='/*'/>
           </Switch>
         </Router>
