@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { register } from '../action/guest'
-import { AlertDanger, AlertSuccess } from '../components/Alert'
+// import { AlertDanger, AlertSuccess } from '../components/Alert'
 import logo from '../logo.png'
 
 const Register = () => {
@@ -57,7 +57,8 @@ const Register = () => {
             </div>
           </div>
           <div className="xl:p-8 py-8 px-3">
-            {/* Todo Alert */}
+            {/* Todo Alert */}           
+
           </div>
           
           <form className="xl:p-5">

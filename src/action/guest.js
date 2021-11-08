@@ -1,6 +1,5 @@
 import api from "../api"
 import qs from 'qs'
-import axios from "axios"
 
 const register = ( data ) => {
 
@@ -18,10 +17,11 @@ const register = ( data ) => {
   })
   .then(res => {
     console.log(res)
+    alert('Sueccess')
   })
   .catch((error) => {
+    alert('Failed')
     console.log(error.toJSON())
-    return "Terjadi masalah"
   })
 
 }
