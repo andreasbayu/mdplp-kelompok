@@ -20,9 +20,9 @@ const Sidebar = (props) => {
             className="p-2 text-white hover:text-blue-800 bg-gray-600 my-2 mx-3 hover:bg-gray-50 rounded-md bg-opacity-50">
               <Assessment/> Statistik
           </Link>
-          <Link to="/user/statistik" onClick={logout}
+          <Link to="/" onClick={logout}
             className="p-2 text-white hover:text-blue-800 bg-gray-600 my-2 mx-3 hover:bg-gray-50 rounded-md bg-opacity-50">
-              <ExitToApp /> Statistik
+              <ExitToApp /> Logout
           </Link>
         </div>
         
