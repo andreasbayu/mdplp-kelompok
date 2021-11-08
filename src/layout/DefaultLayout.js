@@ -1,9 +1,15 @@
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import Footer from '../components/Footer'
+import { Redirect } from 'react-router-dom'
+import { getToken } from '../action/auth'
 
-const DefaultLayout = ({children}) => {
+const DefaultLayout = ({ children }) => {
   
+  const token = getToken()
+
+  if (token === null) return <Redirect to='/login' />
+
   return (
     <>
       <div className="w-full bg-gray-200">
@@ -13,7 +19,7 @@ const DefaultLayout = ({children}) => {
             <Sidebar visibility="hidden"/>
           </div>
           <div className="flex-1">
-            {children}
+            { children }
           </div>
         </div>
         <Footer />

@@ -1,7 +1,29 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { register } from '../action/guest'
+import { AlertDanger, AlertSuccess } from '../components/Alert'
 import logo from '../logo.png'
 
 const Register = () => {
+
+  const data = {
+    fullName: '',
+    email: '',
+    occupation: '',
+    password: '',
+    passwordConfirmation: '',
+    phone: '',
+    country: '',
+    city: '',
+    gender: ''
+  }
+
+  const [state, setState] = useState(data)
+
+  const handleRegister = () => {
+    register(state)
+  }
+  
   return(
    <>
     <div className="flex justify-center ">
@@ -34,74 +56,92 @@ const Register = () => {
               </div>
             </div>
           </div>
+          <div className="xl:p-8 py-8 px-3">
+            {/* Todo Alert */}
+          </div>
           
           <form className="xl:p-5">
             <div className="grid xl:grid-cols-2 xl:gap-4 gap-0">
               <div className="xl:px-4 px-2 xl:py-0">
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Full Name</label>
+                  <label className="font-bold ml-2">Full Name</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
                     placeholder="Please enter your full name"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, fullName: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Email</label>
+                  <label className="font-bold ml-2">Email</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
                     placeholder="Please enter your email"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, email: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Country</label>
+                  <label className="font-bold ml-2">Country</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
                     placeholder="Please enter your country"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, country: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Password</label>
+                  <label className="font-bold ml-2">Password</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="password" 
                     placeholder="Please enter your password"
+                    onChange={e => setState(prevState => ({ ...prevState, password: e.target.value}))}
                   />
                 </div>
               </div>
               <div className="xl:px-4 px-2 pt-0 grid">
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Description</label>
+                  <label className="font-bold ml-2">Occupation</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
-                    placeholder="Description"
+                    placeholder="Occupation"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, occupation: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">Phone Number</label>
+                  <label className="font-bold ml-2">Phone Number</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
                     placeholder="Please enter your phone number"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, phone: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8">
-                  <label for="full-name" className="font-bold ml-2">City</label>
+                  <label className="font-bold ml-2">City</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
                     type="text" 
                     placeholder="Please enter your city"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, city: e.target.value}))}
                   />
                 </div>
                 <div className="mb-8 xl:order-last order-first">
-                  <label for="full-name" className="font-bold ml-2">Confirm Password</label>
+                  <label className="font-bold ml-2">Confirm Password</label>
                   <input 
                     className="rounded-xl border focus:ring-4 focus:outline-none focus:border-opacity-50 border-indigo-700 px-3 py-3 w-full" 
-                    type="text" 
+                    type="password" 
                     placeholder="Confirm password"
+                    required
+                    onChange={e => setState(prevState => ({ ...prevState, passwordConfirmation: e.target.value}))}
                   />
                 </div>
               </div>
@@ -111,27 +151,53 @@ const Register = () => {
               <div className="font-bold">Gender</div>
               <div className="grid xl:grid-cols-4 sm:grid-cols-2">
                 <div>
-                  <input className="mr-2 mt-3 xl:mt-0" type="radio" name="gender" />
+                  <input 
+                    className="mr-2 mt-3 xl:mt-0" 
+                    type="radio" 
+                    name="gender" 
+                    value="Male"
+                    onClick={e => setState(prevState => ({ ...prevState, gender: e.target.value}))}
+                    />
                   <label>Male</label>
                 </div>
                 <div>
-                  <input className="mr-2 mt-3 xl:mt-0" type="radio" name="gender" />
+                  <input 
+                    className="mr-2 mt-3 xl:mt-0" 
+                    type="radio" 
+                    name="gender"
+                    value="Female"
+                    onClick={e => setState(prevState => ({ ...prevState, gender: e.target.value}))}  
+                    />
                   <label>Female</label>
                 </div>
                 <div>
-                  <input className="mr-2 mt-3 xl:mt-0" type="radio" name="gender" />
+                  <input 
+                    className="mr-2 mt-3 xl:mt-0" 
+                    type="radio" 
+                    name="gender"
+                    value="Other"
+                    onClick={e => setState(prevState => ({ ...prevState, gender: e.target.value}))} 
+                    />
                   <label>Other</label>
                 </div>
                 <div>
-                  <input className="mr-2 mt-3 xl:mt-0" type="radio" name="gender" />
-                  <label>Prefer no to say</label>
+                  <input 
+                    className="mr-2 mt-3 xl:mt-0" 
+                    type="radio" 
+                    name="gender" 
+                    value="Prefer not to say"
+                    onClick={e => setState(prevState => ({ ...prevState, gender: e.target.value}))}
+                    />
+                  <label>Prefer not to say</label>
                 </div>
               </div>
             </div>
             <div className="mt-10 flex justify-center">
               <button 
-              className="bg-blue-800 rounded-full font-bold xl:w-3/4 w-full p-2 text-white hover:bg-blue-600"
-              >
+                type="button"
+                className="bg-blue-800 rounded-full font-bold xl:w-3/4 w-full p-2 text-white hover:bg-blue-600"
+                onClick={handleRegister}
+                >
                 Sign Up
               </button>
             </div>

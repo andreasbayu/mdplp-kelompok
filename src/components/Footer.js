@@ -1,4 +1,6 @@
-import logo from '../logo.svg'
+import instagram from '../assets/instagram.png'
+import facebook from '../assets/facebook.png'
+import twitter from '../assets/twitter.png'
 
 const Footer = () => {
   return (
@@ -6,9 +8,9 @@ const Footer = () => {
       <div className="w-full">
         <div className="py-4 grid justify-items-center bg-white">
           <div className="flex flex-row">
-            <img src={logo} alt="twitter-logo" width="60"/>
-            <img src={logo} alt="facebook-logo" width="60"/>
-            <img src={logo} alt="instagram-logo" width="60"/>
+            <img src={instagram} alt="twitter-logo" width="30" className="mx-2"/>
+            <img src={facebook} alt="facebook-logo" width="30" className="mx-2"/>
+            <img src={twitter} alt="instagram-logo" width="30" className="mx-2"/>
           </div>
           <div className="mt-4">
             Artikel | Kontak | Tentang Kami
